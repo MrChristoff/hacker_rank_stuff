@@ -13,7 +13,6 @@ describe "Simple converter" do
     celsius = 10
     kelvin = 283.15
     fahrenheit = 50
-    p celsius
 
     it "converts 'celsius' to 'kelvin'" do
       expect(converter.convert_temp(celsius, input_scale: 'celsius', output_scale: 'kelvin')).to eq(kelvin)

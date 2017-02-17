@@ -4,8 +4,16 @@ class SimpleConverter
     case
     when input_scale == 'celsius' && output_scale == 'kelvin'
       num + 273.15
+    when input_scale == 'kelvin' && output_scale == 'celsius'
+      num - 273.15
     when input_scale == 'celsius' && output_scale == 'fahrenheit'
       (num * 1.8) + 32
+    when input_scale == 'fahrenheit' && output_scale == 'celsius'
+      (num - 32) / 1.8
+    when input_scale == 'fahrenheit' && output_scale == 'kelvin'
+      (num + 459.67) * 5/9
+    when input_scale == 'kelvin' && output_scale == 'fahrenheit'
+      ((num * 9/5) - 459.67).round
     else
       "Not a valid conversion"
     end
