@@ -4,6 +4,8 @@ class SimpleConverter
     case
     when input_scale == 'celsius' && output_scale == 'kelvin'
       num + 273.15
+    when input_scale == 'celsius' && output_scale == 'fahrenheit'
+      (num * 1.8) + 32
     else
       "Not a valid conversion"
     end
