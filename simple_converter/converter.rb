@@ -5,15 +5,15 @@ class SimpleConverter
     when input_scale == 'celsius' && output_scale == 'kelvin'
       celsius_to_kelvin(num)
     when input_scale == 'kelvin' && output_scale == 'celsius'
-      num - 273.15
+      kelvin_to_celsius(num)
     when input_scale == 'celsius' && output_scale == 'fahrenheit'
-      (num * 1.8) + 32
+      celsius_to_fahrenheit(num)
     when input_scale == 'fahrenheit' && output_scale == 'celsius'
-      (num - 32) / 1.8
+      fahrenheit_to_celsius(num)
     when input_scale == 'fahrenheit' && output_scale == 'kelvin'
-      (num + 459.67) * 5/9
+      fahrenheit_to_kelvin(num)
     when input_scale == 'kelvin' && output_scale == 'fahrenheit'
-      ((num * 9/5) - 459.67).round
+      kelvin_to_fahrenheit(num)
     else
       "Not a valid conversion"
     end
@@ -21,6 +21,26 @@ class SimpleConverter
 
   def celsius_to_kelvin(num)
     num + 273.15
+  end
+
+  def kelvin_to_celsius(num)
+    num - 273.15
+  end
+
+  def celsius_to_fahrenheit(num)
+    (num * 1.8) + 32
+  end
+
+  def fahrenheit_to_celsius(num)
+    (num - 32) / 1.8
+  end
+
+  def fahrenheit_to_kelvin(num)
+    (num + 459.67) * 5/9
+  end
+
+  def kelvin_to_fahrenheit(num)
+    ((num * 9/5) - 459.67).round
   end
 
 end
