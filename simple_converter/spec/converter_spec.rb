@@ -1,14 +1,14 @@
 require_relative '../converter.rb'
 
 describe "Simple converter" do
-  describe "Converter input" do
+  context "Converter input" do
     let (:converter) {SimpleConverter.new}
 
     it "responds to #convert_temp" do
       expect(converter).to respond_to(:convert_temp)
     end
   end
-  describe "Conversions" do
+  context "Conversions" do
     let (:converter) {SimpleConverter.new}
     celsius = 10
     kelvin = 283.15

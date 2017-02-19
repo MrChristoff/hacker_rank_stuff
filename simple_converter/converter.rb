@@ -3,7 +3,7 @@ class SimpleConverter
   def convert_temp(num, input_scale:, output_scale: 'celsius')
     case
     when input_scale == 'celsius' && output_scale == 'kelvin'
-      num + 273.15
+      celsius_to_kelvin(num)
     when input_scale == 'kelvin' && output_scale == 'celsius'
       num - 273.15
     when input_scale == 'celsius' && output_scale == 'fahrenheit'
@@ -17,6 +17,10 @@ class SimpleConverter
     else
       "Not a valid conversion"
     end
+  end
+
+  def celsius_to_kelvin(num)
+    num + 273.15
   end
 
 end
