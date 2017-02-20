@@ -61,3 +61,38 @@ until set_a.empty? && set_b.empty?
 end
 
 print(set_a_result, " ", set_b_result)
+
+#----------------------#
+
+#A Very Big Sum
+# Print a single value equal to the sum of the elements in the array.
+
+
+n = gets.strip.to_i
+arr = gets.strip
+arr = arr.split(' ').map(&:to_i)
+
+print(arr.inject'+')
+
+# #-------------------#
+# #Diagonal Difference
+
+
+def diagonal_diff
+  n = 3
+  a = [[11, 2, 4], [4, 5, 6], [10, 8, -12]]
+  diag_1 = []
+  diag_2 = []
+
+  for i in 0...n
+    diag_1 << a[i][i]
+  end
+
+  x = n -1
+
+  for i in 0...n
+    diag_2 << a[i][x]
+    x -= 1
+  end
+  print((diag_1.inject('+') - diag_2.inject('+')).abs)
+end
