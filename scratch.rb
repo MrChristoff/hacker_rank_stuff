@@ -175,3 +175,29 @@ def staircase
   print(result)
 
 end
+
+# Time conversion
+# conver a single string of time "hh:mm:ssAM||PM" to 24hour display
+# 12:00:00AM = 00:00:00
+# 12:00:00PM = 12:00:00
+
+def time_conversion
+  time = "07:12:00PM"
+
+  case
+  when time[0..1] == "12" && time[-2] == "A"
+    result = time.sub("12", "00")
+    result = result.chomp("AM")
+  when time[0..1] == "12" && time[-2] == "P"
+    result = time.chomp("PM")
+  when time[-2] == "A"
+    result = time.chomp("AM")
+  else
+    hour = (time[0..1].to_i + 12).to_s
+    result = (time.sub(/\d\d/, hour)).chomp("PM")
+
+  end
+  print(result, "\n")
+end
+
+time_conversion
