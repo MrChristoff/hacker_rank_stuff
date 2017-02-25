@@ -199,5 +199,3 @@ def time_conversion
   end
   print(result, "\n")
 end
-
-time_conversion
