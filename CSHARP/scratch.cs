@@ -241,3 +241,45 @@ class Solution {
         }
     }
 }
+
+// Time conversion
+// Convert normal time to military time
+// 07:45:00PM should become 19:45:00
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+
+    static void Main(String[] args) {
+        string time = Console.ReadLine();
+        int n = time.Length - 2;
+        bool pm = (time.Substring(n) == "PM");
+        int hour = Convert.ToInt32(time.Substring(0,2));
+        string result;
+        string strippedTime = time.Substring(2, 6);
+
+        if (hour == 12 && !pm) // 12AM
+        {
+            result = "00" + strippedTime;
+        }
+        else if (hour == 12 && pm || hour != 12 && !pm ) // 12PM or 1 - 11 AM
+        {
+            result = hour.ToString("D2") + strippedTime; //pad 1 - 9 with preceding 0
+        }
+        else // 1 - 11 PM
+        {
+            result = (hour + 12) + strippedTime;
+        }
+
+
+ /*
+        Console.WriteLine(time);
+        Console.WriteLine(hour);
+        Console.WriteLine(pm);
+        Console.WriteLine(strippedTime);
+*/
+        Console.WriteLine(result);
+    }
+}
