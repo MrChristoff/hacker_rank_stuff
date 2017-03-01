@@ -156,3 +156,88 @@ class Solution {
         Console.WriteLine((zeros/floatN));
     }
 }
+
+// Staircase builder - before tidy up
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+
+    static void Main(String[] args) {
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        int x = 1;
+        while (x < n)
+        {
+//            string[] row = {};
+            List<string> row = new List<string>();
+            for (int i = 0; i < (n - x); i++)
+            {
+//                Array.add(row, " ");
+                row.Add(" ");
+            }
+
+            for (int y = 0; y <= x; y++)
+            {
+                row.Add("#");
+            }
+
+            string result = string.Join("", row.ToArray());
+            Console.WriteLine(result);
+//            Console.WriteLine(x);
+            x++;
+        }
+
+
+
+
+
+ //           Print item in multidimensional-array
+/*            foreach(var item in frame)
+                {
+                    Console.WriteLine();
+                    foreach(var subItem in item)
+                        {
+                            Console.Write(subItem.ToString() + " ");
+                        }
+                }
+*/
+
+    }
+}
+
+// Staircase builder - final
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+
+    static void Main(String[] args) {
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        int x = 1;
+        while (x <= n) // build the number of steps
+        {
+            List<string> row = new List<string>(); // create the row from a 'List' (Arrays are immutable in C#)
+
+            for (int i = 0; i < (n - x); i++) // populate the row with the correct number of spaces
+            {
+                row.Add(" ");
+            }
+
+            for (int y = 1; y <= x; y++) // populate the row with the correct number of hashes
+            {
+                row.Add("#");
+            }
+
+            string result = string.Join("", row.ToArray()); //convert the List to a string
+            Console.WriteLine(result); // print the row
+
+            x++;
+        }
+    }
+}
