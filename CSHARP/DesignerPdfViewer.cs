@@ -12,7 +12,8 @@ class Solution {
         Dictionary<char, int> alphabet = new Dictionary<char, int>();
         int index = 0;
         int n = word.Length;
-        int[] charSizes = new int[n];
+        int result;
+        List<int> charSizes = new List<int>();
 
         // populate alphabet dictionary
         for (char c = 'a'; c <= 'z'; c++)
@@ -21,18 +22,33 @@ class Solution {
             index++;
         }
 
-        Console.WriteLine(letterIndex("z", alphabet));
-        Console.WriteLine(letterHeight(letterIndex("z", alphabet), h));
+        // populate charSizes List
+        foreach (char c in word)
+        {
+          int i = letterIndex(c, alphabet);
+          int hVal = letterHeight(i, h);
+          charSizes.Add(hVal);
 
+        }
+
+        result = totalArea(n, charSizes);
+        Console.WriteLine(result);
 
     }
-    static int letterIndex(string letter, Dictionary<char, int> alphabetDictionary)
-        {
-            return alphabetDictionary[Convert.ToChar(letter)];
-        }
+
+    static int letterIndex(char letter, Dictionary<char, int> alphabetDictionary)
+    {
+      return alphabetDictionary[letter];
+    }
 
     static int letterHeight(int hIndex, int[] heightArr)
     {
-        return heightArr[hIndex];
+      return heightArr[hIndex];
+    }
+
+    static int totalArea(int length, List<int> charHeights)
+    {
+      int cMax = charHeights.Max();
+      return length * cMax;
     }
 }
